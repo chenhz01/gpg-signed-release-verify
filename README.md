@@ -2,6 +2,8 @@
 
 Verify a GPG (or deterministic demo) signature before any downloaded release artifact is executed. A fail-closed gate for agents and CI pipelines. If your workflow downloads and runs binaries built by someone else, you need this check; if you only run code from your own package manager with its own verifier, you probably do not.
 
+<p align="center"><img src="docs/demo.gif" alt="demo" width="720"></p>
+
 ## Problem
 
 Agents and automation pipelines download executables constantly — release binaries, installers, model runners. Almost nobody verifies the signature of what they just downloaded. CDN caches get poisoned, mirrors go stale or hostile, and a 302 redirect is all it takes to swap a payload. Most desktop-app repositories treat "the artifact might be tampered with in transit" as someone else's problem; a few high-traffic proxy clients treat it as a first-class threat and sign every release artifact precisely so the download chain can be closed [unverified claim about specific projects — see the source-repo link below].
